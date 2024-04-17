@@ -1,0 +1,3 @@
+C:/Users/stasi/OneDrive/Pulpit/cpp studia/SD2/cmake-build-debug/CMakeFiles/SD2.dir
+C:/Users/stasi/OneDrive/Pulpit/cpp studia/SD2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/stasi/OneDrive/Pulpit/cpp studia/SD2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
