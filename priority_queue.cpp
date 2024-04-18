@@ -3,7 +3,7 @@
 //
 
 #include "priority_queue.h"
-
+#include <iostream>
 priority_queue::priority_queue() {
 
     size = 0;
@@ -48,29 +48,21 @@ void priority_queue::decrease_capacity() {
     }
 }
 
-void priority_queue::insertion_sort() {
-
-    for(int i = 1; i < size; i++) {
-
-        Node temp = arr[i];
-        int j = i - 1;
-
-        while(j >= 0 && arr[j].key < temp.key) {
-            arr[j + 1] = arr[j];
-            j--;
-        }
-
-        arr[j + 1] = temp;
-    }
-}
-
 void priority_queue::insert(int element, int key){
 
     size++;
     increase_capacity();
-    arr[size - 1].element = element;
-    arr[size - 1].key = key;
-    insertion_sort();
+    int i = size - 1;
+    arr[i].element = element;
+    arr[i].key = key;
+    while(arr[i - 1].key < key && i - 1 >= 0) {
+
+        Node temp = arr[i];
+        arr[i] = arr[i - 1];
+        arr[i - 1] = temp;
+        i--;
+    }
+
 }
 
 int priority_queue::extract_max() {
@@ -87,11 +79,18 @@ void priority_queue::modify_key(int element, int new_key) {
         if(arr[i].element == element) {
 
             arr[i].key = new_key;
+            while(arr[i - 1].key < new_key && i - 1 >= 0) {
+
+                Node temp = arr[i];
+                arr[i] = arr[i - 1];
+                arr[i - 1] = temp;
+                i--;
+            }
             break;
         }
     }
 
-    insertion_sort();
+    //insertion_sort();
 }
 
 int priority_queue::peek() {

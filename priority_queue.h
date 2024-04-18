@@ -17,7 +17,6 @@ class priority_queue {
 int size;
 Node *arr;
 int capacity;
-void insertion_sort();
 
 public:
     priority_queue();
