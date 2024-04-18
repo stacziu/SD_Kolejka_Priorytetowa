@@ -89,8 +89,6 @@ void priority_queue::modify_key(int element, int new_key) {
             break;
         }
     }
-
-    //insertion_sort();
 }
 
 int priority_queue::peek() {
