@@ -4,10 +4,13 @@
 
 #include "priority_queue.h"
 #include <iostream>
+#include <fstream>
+#include <sstream>
+
 priority_queue::priority_queue() {
 
     size = 0;
-    capacity = 1;
+    capacity = 4;
     arr = new Node[capacity];
 }
 
@@ -89,13 +92,11 @@ void priority_queue::modify_key(int element, int new_key) {
             break;
         }
     }
-
-    //insertion_sort();
 }
 
 int priority_queue::peek() {
 
-    return arr[0].element;
+    return arr[size - 1].element;
 }
 
 int priority_queue::get_size() {
@@ -110,3 +111,50 @@ void priority_queue::print() {
     }
 }
 
+void priority_queue::load_from_file(std::string file_name, int n)
+{
+    std::ifstream inputFile(file_name);
+
+    if (!inputFile.is_open()) {
+        std::cerr << "Nie można otworzyć pliku do odczytu.";
+        return;
+    }
+
+    std::string line;
+    for(int i = 0; i < n; i++){
+
+        std::getline(inputFile, line);
+        std::istringstream iss(line);
+        std::string priority;
+        std::string value;
+        std::getline(iss, value, ',');
+        std::getline(iss, priority, ',');
+        insert(std::stoi(value),std::stoi(priority));
+    }
+
+    inputFile.close();
+}
+
+int priority_queue::get_lowestkey() {
+    return arr[size - 1].key;
+}
+
+int priority_queue::get_highestkey() {
+    return arr[0].key;
+}
+
+int priority_queue::get_value(int i) {
+    return arr[i].element;
+}
+
+void priority_queue::copy(priority_queue &queue) {
+
+    size = queue.size;
+    capacity = queue.capacity;
+    delete[] arr;
+    arr = new Node[capacity];
+
+    for(int i = 0; i < size; i++) {
+        arr[i] = queue.arr[i];
+    }
+}

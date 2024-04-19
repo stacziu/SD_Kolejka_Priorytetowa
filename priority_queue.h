@@ -29,6 +29,11 @@ public:
     void print();
     void increase_capacity();
     void decrease_capacity();
+    void load_from_file(std::string file_name, int n);
+    int get_highestkey();
+    int get_lowestkey();
+    int get_value(int i);
+    void copy(priority_queue &queue);
 };
 
 
