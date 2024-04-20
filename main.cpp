@@ -273,7 +273,7 @@ int main() {
     priority_queue_test_insertBack(100, "results64000Back.txt", 64000);
     priority_queue_test_insertBack(100, "results128000Back.txt", 128000);*/
 
-    /*priority_queue_test_modifyKey(10, "results100modify.txt", 100);
+    priority_queue_test_modifyKey(10, "results100modify.txt", 100);
     priority_queue_test_modifyKey(10, "results1000modify.txt", 1000);
     priority_queue_test_modifyKey(10, "results2000modify.txt", 2000);
     priority_queue_test_modifyKey(10, "results4000modify.txt", 4000);
@@ -281,7 +281,7 @@ int main() {
     priority_queue_test_modifyKey(10, "results16000modify.txt", 16000);
     priority_queue_test_modifyKey(10, "results32000modify.txt", 32000);
     priority_queue_test_modifyKey(10, "results64000modify.txt", 64000);
-    priority_queue_test_modifyKey(10, "results128000modify.txt", 128000);*/
+    priority_queue_test_modifyKey(10, "results128000modify.txt", 128000);
 
     /*priority_queue_test_extract(100, "results100extract.txt", 100);
     priority_queue_test_extract(100, "results1000extract.txt", 1000);
@@ -313,7 +313,7 @@ int main() {
     priority_queue_test_getsize(100, "results64000getsize.txt", 64000);
     priority_queue_test_getsize(100, "results128000getsize.txt", 128000);*/
 
-    priority_queue_test_insertRandom(10, "results100insertRandom.txt", 100);
+    /*priority_queue_test_insertRandom(10, "results100insertRandom.txt", 100);
     priority_queue_test_insertRandom(10, "results1000insertRandom.txt", 1000);
     priority_queue_test_insertRandom(10, "results2000insertRandom.txt", 2000);
     priority_queue_test_insertRandom(10, "results4000insertRandom.txt", 4000);
@@ -321,7 +321,7 @@ int main() {
     priority_queue_test_insertRandom(10, "results16000insertRandom.txt", 16000);
     priority_queue_test_insertRandom(10, "results32000insertRandom.txt", 32000);
     priority_queue_test_insertRandom(10, "results64000insertRandom.txt", 64000);
-    priority_queue_test_insertRandom(10, "results128000insertRandom.txt", 128000);
+    priority_queue_test_insertRandom(10, "results128000insertRandom.txt", 128000);*/
 
 
 

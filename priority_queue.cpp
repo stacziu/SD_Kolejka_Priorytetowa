@@ -82,13 +82,23 @@ void priority_queue::modify_key(int element, int new_key) {
         if(arr[i].element == element) {
 
             arr[i].key = new_key;
-            while(arr[i - 1].key < new_key && i - 1 >= 0) {
 
+            // If the new key is greater, move up the queue
+            while(i > 0 && arr[i - 1].key < new_key) {
                 Node temp = arr[i];
                 arr[i] = arr[i - 1];
                 arr[i - 1] = temp;
                 i--;
             }
+
+            // If the new key is less, move down the queue
+            while(i < size - 1 && arr[i + 1].key >= new_key) {
+                Node temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                i++;
+            }
+
             break;
         }
     }
