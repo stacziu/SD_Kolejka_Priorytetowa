@@ -109,6 +109,32 @@ void priority_queue_test_insertFront(int numOfArrays, std::string plik, int size
     delete[] queues;
 }
 
+void priority_queue_test_getsize(int numOfArrays, std::string plik, int size){
+    std::ofstream results(plik);
+
+    generuj_x_liczb_do_pliku(size, "dane.txt");
+
+    priority_queue* queues = new priority_queue[numOfArrays];
+
+    queues[0].load_from_file("dane.txt", size);
+    for (int i = 1; i < numOfArrays; i++) {
+
+        queues[i].copy(queues[0]);
+    }
+
+    int highest_prio = queues[0].get_lowestkey();
+    auto begin = std::chrono::high_resolution_clock::now();
+    for(int i = 0; i < numOfArrays; i++) {
+
+        queues[i].get_size();
+    }
+    auto end = std::chrono::high_resolution_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+    results << elapsed.count() / numOfArrays << std::endl;
+
+    delete[] queues;
+}
+
 void priority_queue_test_extract(int numOfArrays, std::string plik, int size){
     std::ofstream results(plik);
 
@@ -189,45 +215,45 @@ void priority_queue_test_peek(int numOfArrays, std::string plik, int size){
 
 int main() {
 
-    priority_queue_test_insertFront(100, "insert100Front.txt", 100);
+    /*priority_queue_test_insertFront(100, "insert100Front.txt", 100);
     priority_queue_test_insertFront(100, "insert1000Front.txt", 1000);
     priority_queue_test_insertFront(100, "insert2000Front.txt", 2001);
     priority_queue_test_insertFront(100, "insert4000Front.txt", 4000);
     priority_queue_test_insertFront(100, "insert8000Front.txt", 8000);
     priority_queue_test_insertFront(100, "insert16000Front.txt", 16000);
-    priority_queue_test_insertFront(100, "insert320000Front.txt", 32000);
+    priority_queue_test_insertFront(100, "insert32000Front.txt", 32000);
     priority_queue_test_insertFront(100, "insert640000Front.txt", 64000);
-    priority_queue_test_insertFront(100, "insert128000Front.txt", 128000);
+    priority_queue_test_insertFront(100, "insert128000Front.txt", 128000);*/
 
-    priority_queue_test_insertBack(100, "results100Back.txt", 100);
+    /*priority_queue_test_insertBack(100, "results100Back.txt", 100);
     priority_queue_test_insertBack(100, "results1000Back.txt", 1000);
     priority_queue_test_insertBack(100, "results2000Back.txt", 2000);
     priority_queue_test_insertBack(100, "results4000Back.txt", 4000);
     priority_queue_test_insertBack(100, "results8000Back.txt", 8000);
     priority_queue_test_insertBack(100, "results16000Back.txt", 16000);
-    priority_queue_test_insertBack(100, "results320000Back.txt", 32000);
+    priority_queue_test_insertBack(100, "results32000Back.txt", 32000);
     priority_queue_test_insertBack(100, "results640000Back.txt", 64000);
-    priority_queue_test_insertBack(100, "results128000Back.txt", 128000);
+    priority_queue_test_insertBack(100, "results128000Back.txt", 128000);*/
 
-    priority_queue_test_modifyKey(10, "results100modify.txt", 100);
+    /*priority_queue_test_modifyKey(10, "results100modify.txt", 100);
     priority_queue_test_modifyKey(10, "results1000modify.txt", 1000);
     priority_queue_test_modifyKey(10, "results2000modify.txt", 2000);
     priority_queue_test_modifyKey(10, "results4000modify.txt", 4000);
     priority_queue_test_modifyKey(10, "results8000modify.txt", 8000);
     priority_queue_test_modifyKey(10, "results16000modify.txt", 16000);
-    priority_queue_test_modifyKey(10, "results320000modify.txt", 32000);
+    priority_queue_test_modifyKey(10, "results32000modify.txt", 32000);
     priority_queue_test_modifyKey(10, "results640000modify.txt", 64000);
-    priority_queue_test_modifyKey(10, "results128000modify.txt", 128000);
+    priority_queue_test_modifyKey(10, "results128000modify.txt", 128000);*/
 
-    priority_queue_test_extract(100, "results100extract.txt", 100);
+    /*priority_queue_test_extract(100, "results100extract.txt", 100);
     priority_queue_test_extract(100, "results1000extract.txt", 1000);
     priority_queue_test_extract(100, "results2000extract.txt", 2000);
     priority_queue_test_extract(100, "results4000extract.txt", 4000);
     priority_queue_test_extract(100, "results8000extract.txt", 8000);
     priority_queue_test_extract(100, "results16000extract.txt", 16000);
-    priority_queue_test_extract(100, "results320000extract.txt", 32000);
+    priority_queue_test_extract(100, "results32000extract.txt", 32000);
     priority_queue_test_extract(100, "results640000extract.txt", 64000);
-    priority_queue_test_extract(100, "results128000extract.txt", 128000);
+    priority_queue_test_extract(100, "results128000extract.txt", 128000);*/
 
     priority_queue_test_peek(100, "results100peek.txt", 100);
     priority_queue_test_peek(100, "results1000peek.txt", 1000);
@@ -235,9 +261,20 @@ int main() {
     priority_queue_test_peek(100, "results4000peek.txt", 4000);
     priority_queue_test_peek(100, "results8000peek.txt", 8000);
     priority_queue_test_peek(100, "results16000peek.txt", 16000);
-    priority_queue_test_peek(100, "results320000peek.txt", 32000);
+    priority_queue_test_peek(100, "results32000peek.txt", 32001);
     priority_queue_test_peek(100, "results640000peek.txt", 64000);
     priority_queue_test_peek(100, "results128000peek.txt", 128000);
+
+    /*priority_queue_test_getsize(100, "results100getsize.txt", 100);
+    priority_queue_test_getsize(100, "results1000getsize.txt", 1000);
+    priority_queue_test_getsize(100, "results2000getsize.txt", 2000);
+    priority_queue_test_getsize(100, "results4000getsize.txt", 4000);
+    priority_queue_test_getsize(100, "results8000getsize.txt", 8000);
+    priority_queue_test_getsize(100, "results16000getsize.txt", 16000);
+    priority_queue_test_getsize(100, "results32000getsize.txt", 32000);
+    priority_queue_test_getsize(100, "results640000getsize.txt", 64000);
+    priority_queue_test_getsize(100, "results128000getsize.txt", 128000);*/
+
 
 
     return 0;

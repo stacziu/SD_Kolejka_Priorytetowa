@@ -29,6 +29,7 @@ public:
     void print();
     void increase_capacity();
     void decrease_capacity();
+    //Do testowania
     void load_from_file(std::string file_name, int n);
     int get_highestkey();
     int get_lowestkey();
